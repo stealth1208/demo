@@ -1,16 +1,21 @@
 import axios from 'axios';
+import { API_KEY } from './constants';
 
-export const request = (method, url, options, customHeaders) =>
-  new Promise((resolve, reject) => {
+export const request = (url, options, customHeaders) => {
+  console.log('options', options)
+  return  new Promise((resolve, reject) => {
     axios({
-      method,
+      method: 'GET',
       url,
-      headers: {
-        // ...headers(extraHeaders),
+      headers: {        
+        Accept: '*/*',
         ...customHeaders,
       },
       withCredentials: true,
-      ...options,
+      options: {        
+        apikey: API_KEY,
+        ...options,
+      }
     })
       .then(parseJSON)
       .then(response => resolve(response.json))
@@ -18,6 +23,8 @@ export const request = (method, url, options, customHeaders) =>
         console.log(response);
       });
   });
+}
+ 
 
   export const parseJSON = response => {
     if (response.status === 201 || response.status === 204) {
