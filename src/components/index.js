@@ -5,3 +5,4 @@ export { default as Caption } from './Caption/Caption';
 export { default as Title } from './Title/Title';
 export { default as Description } from './Description/Description';
 export { default as Button } from './Button/Button';
+export { default as Thumbnail } from './Thumbnail/Thumbnail';

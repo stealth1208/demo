@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import { Planets } from '../components';
 import { getCharList } from'../api/charApi';
 import { Column, Table, Cell } from "@blueprintjs/table";
+import { Thumbnail } from '../components';
 import get from 'lodash.get';
 
 
@@ -24,15 +25,18 @@ class HomepageContainer extends Component {
 
   cellRenderer = (rowIndex, colIndex) => {        
     const colName = this.listRender[colIndex];    
-    const values = this.getData(colName);    
+    const values = this.getData(colName);
+    const isImage = colName === this.imagePath;
     return (
-      <Cell>
+      <Cell
+        style={{width: "200px", height: "200px"}}  
+      >
         {
-          colName === this.imagePath &&
-          <img src={`${values[rowIndex]}.jpg`} width="100" height="100"/>
+          isImage &&
+          <Thumbnail imgSrc={values[rowIndex]} />           
         }
         {
-          colName !== this.imagePath &&
+          !isImage &&
           `${values[rowIndex]}`
         }
       </Cell>  
@@ -52,10 +56,13 @@ class HomepageContainer extends Component {
         {
           !!results.length &&
           <>
-            <Table numRows={results.length}>
+            <Table 
+              numRows={results.length}                       
+              columnWidths={[200, 200, 300]}              
+            >
             {
               this.listRender.map(field => {
-                return <Column 
+                return <Column                  
                   name={field.toUpperCase()} 
                   cellRenderer={this.cellRenderer}
                 />
