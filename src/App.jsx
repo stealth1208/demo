@@ -1,4 +1,4 @@
-import './styles/_styles.scss';
+import './styles/main.scss';
 import React, { Component } from 'react';
 import { Header } from './components';
 import { HomepageContainer } from './containers';

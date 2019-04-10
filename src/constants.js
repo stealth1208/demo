@@ -1,2 +1,2 @@
 export const END_POINT = 'http://gateway.marvel.com';
-export const API_KEY = 'c4690d3882c4cc916200f943e685253755b8237d';
+export const API_KEY = 'de132464a5d811abe381b4d429042967';
