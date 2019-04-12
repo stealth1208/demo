@@ -1,25 +1,25 @@
 import React, { Component } from 'react';
-import {
-  Photo,
-  Caption,
-  Title,
-  Description,
-  Button
-} from '../../components';
-import './Planets.scss';
+// import {
+//   Photo,
+//   Caption,
+//   Title,
+//   Description,
+//   Button
+// } from '../../components';
+// import './Planets.scss';
 
 class Planets extends Component {
   render() {
     return (
       <div className="planets">
         <div className="planets__item">
-          <Photo />
+          {/* <Photo />
           <Caption />
           <Title />
           <Description />
           <Button>
             Like
-          </Button>
+          </Button> */}
         </div>
       </div>
     );

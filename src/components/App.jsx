@@ -1,14 +1,14 @@
-import './styles/main.scss';
+import '../styles/main.scss';
 import React, { Component } from 'react';
-import { Header } from './components';
-import { HomepageContainer } from './containers';
+import { Header } from './presentationals';
+import { SuperHeroListContainer } from './containers';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <Header />
-        <HomepageContainer />
+        { this.props.children }
       </div>
     );
   }
