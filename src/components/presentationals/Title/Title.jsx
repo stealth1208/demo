@@ -1,10 +1,19 @@
 import React from 'react';
 
-const Title = () => {
+const Title = ({ children, isTitle = false }) => {
   return (
-    <div>
-      Title
-    </div>
+    <>
+      {
+        isTitle &&
+        <h1>
+          { children }
+        </h1>
+      }
+      {
+        !isTitle &&
+        { children }
+      }
+    </>
   );
 };
 

@@ -6,23 +6,22 @@ import App from './components/App';
 
 render (
   <BrowserRouter>
-    <Switch>
-      <Route path="/" >
-        <App />
-
+    <App>
+      <Switch>
         <Route
-
+          exact
           path="/super-heroes"
-          component={SuperHeroListContainer} />
+          component={SuperHeroListContainer}
+        />
 
         <Route
-
+          exact
           path="/super-heroes/:id"
           component={HeroDetailContainer}
         />
         <Route component={NoMatch} />
-      </Route>
-    </Switch>
+      </Switch>
+    </App>
   </BrowserRouter>,
   document.querySelector('#root')
 );

@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Description = () => {
+const Description = ({ children, className = '' }) => {
   return (
-    <p>
-      Description
+    <p className={className}>
+      { children }
     </p>
   );
 };

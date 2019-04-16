@@ -1,12 +1,30 @@
 import React, { Component } from 'react';
+import { getCharacterDetail } from '../../api/marvelApi';
+import {
+  HeroDetail
+} from '../presentationals';
 
 class HeroDetailContainer extends Component {
+  state = {
+    detail: {}
+  };
+
+  async componentWillMount() {
+    const detail = await getCharacterDetail(this.props.match.params.id);
+    this.setState({
+      detail: detail.results && detail.results[0]
+    });
+  }
+
   render() {
-    console.log(this.props)
+    const { detail } = this.state;
+
     return (
-      <div>
-        Hello
-      </div>
+      <>
+        <HeroDetail
+          data={detail}
+        />
+      </>
     );
   }
 }

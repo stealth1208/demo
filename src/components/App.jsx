@@ -1,7 +1,6 @@
-import '../styles/main.scss';
 import React, { Component } from 'react';
 import { Header } from './presentationals';
-import { SuperHeroListContainer } from './containers';
+import '../styles/main.scss';
 
 class App extends Component {
   render() {

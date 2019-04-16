@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-// import { Planets } from '../components';
-import { getCharList } from'../../api/charApi';
+import { getCharList } from'../../api/marvelApi';
 import { Column, Table, Cell, SelectionModes } from "@blueprintjs/table";
 import { Thumbnail } from '../presentationals';
 import get from 'lodash.get';
-import { Link } from 'react-router-dom';
-
 
 class SuperHeroListContainer extends Component {
   constructor(props) {
@@ -13,7 +10,7 @@ class SuperHeroListContainer extends Component {
     this.state = {
       results: []
     };
-    this.imagePath = 'thumbnail.path';
+    this.imagePath = 'thumbnail';
     this.listRender = ['name', 'description', this.imagePath]
   }
 
@@ -39,7 +36,7 @@ class SuperHeroListContainer extends Component {
           isImage &&
           <Thumbnail
             id={id[rowIndex]}
-            imgSrc={values[rowIndex]}
+            src={colName}
             onClick={this.goToDetail}
           />
         }
@@ -74,7 +71,6 @@ class SuperHeroListContainer extends Component {
               columnWidths={[200,200, 300]}
               defaultRowHeight={300}
               selectionModes={SelectionModes.ROWS_AND_CELLS}
-              // onSelection={this.goToDetail}
             >
               {
                 this.listRender.map(field => {

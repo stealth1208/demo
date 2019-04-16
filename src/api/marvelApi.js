@@ -7,3 +7,7 @@ export const  getCharList = () => {
     limit: 10
   });
 }
+
+export const getCharacterDetail = (id) => {
+  return request(`${END_POINT}/v1/public/characters/${id}`);
+}
