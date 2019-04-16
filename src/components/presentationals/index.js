@@ -7,4 +7,4 @@ export { default as Description } from './Description/Description';
 export { default as Button } from './Button/Button';
 export { default as Thumbnail } from './Thumbnail/Thumbnail';
 export { default as HeroDetail } from './HeroDetail/HeroDetail';
-export { default as Series } from './Series/Series';
+export { default as Story } from './Story/Story';

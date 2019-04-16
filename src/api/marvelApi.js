@@ -11,3 +11,7 @@ export const  getCharList = () => {
 export const getCharacterDetail = (id) => {
   return request(`${END_POINT}/v1/public/characters/${id}`);
 }
+
+export const getCharacterStory = (url = '') => {
+  return request (`${url}`);
+}

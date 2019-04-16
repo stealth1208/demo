@@ -4,7 +4,7 @@ import {
   Thumbnail,
   Description,
   Button,
-  Series
+  Story
 } from '../index';
 
 import './HeroDetail.scss';
@@ -16,7 +16,7 @@ class HeroDetail extends Component {
       name,
       thumbnail,
       description,
-      series
+      series      
     } = data;
 
     return (
@@ -32,9 +32,12 @@ class HeroDetail extends Component {
         <Description>
           { description }
         </Description>
-        <Series
-          series={series}
-        />
+        {
+          series && 
+          <Story
+            series={series}          
+          />
+        }
       </div>
     );
   }

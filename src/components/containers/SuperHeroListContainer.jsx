@@ -23,7 +23,7 @@ class SuperHeroListContainer extends Component {
 
   cellRenderer = (rowIndex, colIndex) => {
     const colName = this.listRender[colIndex];
-    const values = this.getData(colName);
+    const values = this.getData(colName);    
     const isImage = colName === this.imagePath;
     const id = this.getData('id');
     return (
@@ -36,7 +36,7 @@ class SuperHeroListContainer extends Component {
           isImage &&
           <Thumbnail
             id={id[rowIndex]}
-            src={colName}
+            src={values[rowIndex]}
             onClick={this.goToDetail}
           />
         }
