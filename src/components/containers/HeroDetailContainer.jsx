@@ -16,6 +16,10 @@ class HeroDetailContainer extends Component {
     });
   }
 
+  goBack = () => {
+    this.props.history.push('/super-heroes');
+  }
+
   render() {
     const { detail } = this.state;
 
@@ -23,6 +27,7 @@ class HeroDetailContainer extends Component {
       <>
         <HeroDetail
           data={detail}
+          goBack={this.goBack}
         />
       </>
     );

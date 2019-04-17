@@ -6,3 +6,11 @@
 /* Import App theme
   =============================== */
 @import 'themes/themes.scss';
+
+/* Import App theme
+  =============================== */
+@import '../components/presentationals/Thumbnail/Thumbnail.scss';
+@import '../components/presentationals/Button/Button.scss';
+@import '../components//presentationals//Header/Header.scss';
+@import '../components/presentationals/HeroDetail/HeroDetail.scss';
+@import '../components/presentationals/SuperHeroList/SuperHeroList.scss';

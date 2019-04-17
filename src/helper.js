@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { API_KEY } from './constants';
 
-let eTag = '';
+let eTags = {};
 
 export const request = (url, options, customHeaders) => {
   return  new Promise((resolve, reject) => {
@@ -10,10 +10,9 @@ export const request = (url, options, customHeaders) => {
       url,
       headers: {
         Accept: '*/*',
-        'If-None-Match': eTag,
+        // 'If-None-Match': eTags[url] || '',
         ...customHeaders,
       },
-      // withCredentials: true,
       params: {
         ...options,
         apikey: API_KEY,
@@ -21,6 +20,11 @@ export const request = (url, options, customHeaders) => {
     })
       .then(parseJSON)
       .then(response => {
+        eTags = {
+          ...eTags,
+          [url]: response.etag
+        };
+
         resolve(response.json)
       })
       .catch(({ error }) => {
@@ -32,11 +36,11 @@ export const request = (url, options, customHeaders) => {
 
   export const parseJSON = response => {
     return new Promise(resolve => {
-      eTag = response.etag;
       resolve({
         status: response.status,
         statusText: response.statusText,
         json: response.data.data,
+        etag: response.data.etag
       });
     });
   };

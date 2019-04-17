@@ -1,0 +1,15 @@
+.hero-list {
+  &__header {
+    th {
+      font-size: 1.8rem;
+      font-weight: bold;
+      text-transform: capitalize;
+    }
+  }
+
+  &__body {
+    td {
+      font-size: 1.4rem;
+    }
+  }
+}
