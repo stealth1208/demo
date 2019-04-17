@@ -38,13 +38,15 @@ class Story extends Component {
       <div>
         {
           story &&
-          <div>
+          <div className="hero-story">
             <strong>From Series: {title}</strong>
-            <div>Start year: {startYear}</div>
-            <div>Rating: {rating}</div>
+            <p className="hero-story__rating">
+              <span>Start year: {startYear}</span>
+              <strong className="float-right">Rating: {rating}</strong>
+            </p>
             {
               !!creatorItems.length &&
-              <div>
+              <p className="hero-story__creators">
                 <strong>Creators</strong>
                 <ul>
                   {
@@ -53,13 +55,13 @@ class Story extends Component {
                     ))
                   }
                 </ul>
-              </div>
+              </p>
             }
     
             {
               !!characterItems.length &&
-              <div>
-                <strong>Characters</strong>
+              <p>
+                <strong className="hero-story__character">Characters</strong>
                 <ul>
                   {
                     characterItems.slice(0, 5).map(item => (
@@ -67,7 +69,7 @@ class Story extends Component {
                     ))
                   }
                 </ul>
-              </div>
+              </p>
             }
           </div>
         }        

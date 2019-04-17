@@ -1,5 +1,5 @@
 import React from 'react';
-import './Thumbnail.scss';
+// import './Thumbnail.scss';
 import get from 'lodash.get';
 
 function Thumbnail({ src = {}, alt='', className='', onClick, id }) {

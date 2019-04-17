@@ -1,4 +1,16 @@
 .hero-detail {
   margin: 0 auto;
   padding: 0 1rem;
+
+  @include breakpoint(sm) {
+    max-width: 50rem;
+  }
+
+  @include breakpoint(lg) {
+    max-width: 70rem;
+  }
+
+  @include breakpoint(xl) {
+    max-width: 90rem;
+  }
 }

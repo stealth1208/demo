@@ -2,7 +2,20 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-color: antiquewhite;
+  background-color: $dark-color;
+  color: $white;
   width: 100%;
   min-height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  box-shadow: 0 2px 5px rgba(99, 99, 99, 0.5);
+
+  &__link {
+    a {
+      color: $white;
+      text-decoration: none;
+    }
+  }
 }

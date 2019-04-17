@@ -7,11 +7,9 @@ import {
   Story
 } from '../index';
 
-import './HeroDetail.scss';
-
 class HeroDetail extends Component {
   render() {
-    const { data } = this.props;
+    const { data, goBack } = this.props;
     const {
       name,
       thumbnail,
@@ -21,15 +19,17 @@ class HeroDetail extends Component {
 
     return (
       <div className="hero-detail">
-        <Title
-          isTitle={true}
-        >
-          { name }
-        </Title>
         <Thumbnail
           src={thumbnail}
         />
-        <Description>
+        <Title
+          isTitle={true}
+          className="hero-detail__title"
+        >
+          { name }
+        </Title>
+        <Description
+        >
           { description }
         </Description>
         {
@@ -38,6 +38,11 @@ class HeroDetail extends Component {
             series={series}          
           />
         }
+        <Button
+          onClick={goBack}
+        >
+          Go back
+        </Button>
       </div>
     );
   }
