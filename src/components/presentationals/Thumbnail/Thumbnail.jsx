@@ -2,11 +2,12 @@ import React from 'react';
 // import './Thumbnail.scss';
 import get from 'lodash.get';
 
-function Thumbnail({ src = {}, alt='', className='', onClick, id }) {
+function Thumbnail({ src = {}, alt='', className='', onClick }) {
   const handleClick = (e) => {
     e.preventDefault();
-    console.log(id)
-    onClick && onClick(id);
+    if (onClick) {
+      onClick();
+    }    
   }
 
   const path = get(src, 'path', '');

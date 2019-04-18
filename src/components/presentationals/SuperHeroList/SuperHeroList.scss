@@ -1,15 +1,48 @@
 .hero-list {
-  &__header {
-    th {
-      font-size: 1.8rem;
-      font-weight: bold;
-      text-transform: capitalize;
-    }
+  margin: 0 auto; 
+
+  @include breakpoint(xl) {
+    max-width: 90rem;
   }
 
-  &__body {
-    td {
-      font-size: 1.4rem;
+  table {
+    thead {
+      display: none;
+
+      @include breakpoint(sm) {
+        display: table-header-group;
+  
+        th {
+          font-size: 1.8rem;
+          font-weight: bold;
+          text-transform: capitalize;
+        }
+      }
+    }    
+    
+    tbody {
+      td.hero-list__body__text-cell {
+        display: none;
+  
+        @include breakpoint(sm) {
+          font-size: 1.4rem;
+          display: table-cell;
+        }
+      }
+      
+      td.hero-list__body__image-cell {
+        @include breakpoint(sm) {
+          min-width: 20rem;
+        }
+
+        @include breakpoint(lg) {
+          min-width: 25rem;
+        }
+
+        @include breakpoint(xl) {
+          min-width: 30rem;
+        }
+      }      
     }
   }
 }

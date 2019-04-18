@@ -51,9 +51,22 @@ const styles = theme => ({
     marginTop: theme.spacing.unit * 3,
     overflowX: "auto",
   },
-  table: {
-    minWidth: 700
-  }
+  flexContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    boxSizing: 'border-box',
+  },
+  tableRow: {
+    cursor: 'pointer',
+  },
+  tableRowHover: {
+    '&:hover': {
+      backgroundColor: theme.palette.grey[200],
+    },
+  },
+  tableCell: {
+    flex: 1,
+  },
 });
 
 export default withStyles(styles)(SuperHeroListContainer);

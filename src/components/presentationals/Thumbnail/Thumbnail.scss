@@ -1,10 +1,11 @@
 .character-thumbnail {
+  max-width: 30rem;
   text-align: center;
-  padding: 0.5rem 0.5rem 0 0;
-  box-shadow: 5px 7px 5px 0px rgba(0, 0, 0, 0.75);
+  margin: 0 auto;
+  padding: 5px 0 0;
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 
   @include breakpoint(sm) {
-    max-width: 40rem;
-    margin: 0 auto;
+    max-width: 40rem;    
   }
 }
