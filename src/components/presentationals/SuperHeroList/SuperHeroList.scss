@@ -1,5 +1,7 @@
 .hero-list {
-  margin: 0 auto; 
+  margin: 0 auto;
+  height: 700px;
+  overflow-y: auto;
 
   @include breakpoint(xl) {
     max-width: 90rem;

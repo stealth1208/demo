@@ -18,7 +18,6 @@ class Story extends Component {
   }
 
   render() {
-    console.log('Series', this.state)
     const { story } = this.state;
     if (!story) {
       return  <p>Loading</p>;

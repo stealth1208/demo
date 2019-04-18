@@ -6,3 +6,4 @@ export { default as Thumbnail } from './Thumbnail/Thumbnail';
 export { default as HeroDetail } from './HeroDetail/HeroDetail';
 export { default as Story } from './Story/Story';
 export { default as SuperHeroList } from './SuperHeroList/SuperHeroList';
+export { default as Loading } from './Loading/Loading';

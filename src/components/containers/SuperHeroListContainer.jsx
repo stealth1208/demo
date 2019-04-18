@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
 import { getCharList } from'../../api/marvelApi';
-import { SuperHeroList } from '../presentationals';
-import { withStyles } from "@material-ui/core/styles";
+import { SuperHeroList, Loading } from '../presentationals';
+import { withStyles } from '@material-ui/core/styles';
 
 class SuperHeroListContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      results: []
+      results: [],
+      isLoading: true
     };
     this.imagePath = 'thumbnail';
     this.listRender = ['name', 'description', this.imagePath]
   }
 
   async componentWillMount() {
-    const charList = await getCharList();
+    const charList = await getCharList(0);
     this.createData(charList);
   }
+
 
   goToDetail = (id) => {
     this.props.history.push(`/super-heroes/${id}`);
@@ -26,21 +28,32 @@ class SuperHeroListContainer extends Component {
     const { results } = data;
     const filtered = results.map(({id, name, description, thumbnail}) => ({id, name, description, thumbnail}));
     this.setState({
-      results: filtered
+      results: [...this.state.results, ...filtered],
+      isLoading: false
     });
   }
 
+  loadMore = async (page) => {
+    console.log('page', page)
+    const charList = await getCharList(page);
+    this.createData(charList);
+  }
+
   render = () => {
-    const { results } = this.state;
+    const { results, isLoading } = this.state;
     const { classes } = this.props;
 
     return (
-      <SuperHeroList
-        columns={this.listRender}
-        customClass={classes}
-        data={results}
-        goToDetail={this.goToDetail}
-      />
+      <>
+        <SuperHeroList
+          columns={this.listRender}
+          customClass={classes}
+          data={results}
+          goToDetail={this.goToDetail}
+          loadData={this.loadMore}
+          isLoading={isLoading}
+        />
+      </>
     );
   }
 }

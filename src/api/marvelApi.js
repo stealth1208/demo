@@ -1,10 +1,11 @@
 import { request } from '../helper';
 import { END_POINT } from '../constants';
 
-export const  getCharList = () => {
+export const getCharList = (offset) => {
   return request(`${END_POINT}/v1/public/characters`, {
-    orderBy: 'name',
-    limit: 10
+    orderBy: 'modified',
+    limit: 10,
+    offset
   });
 }
 

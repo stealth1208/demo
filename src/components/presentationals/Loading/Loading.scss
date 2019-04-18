@@ -1,0 +1,28 @@
+.loading {
+  overflow: hidden;
+  text-align: center;
+  min-height: 70px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+
+  .bp3-spinner {
+    display: block;
+    position: absolute;
+    transform: translateX(-50%) translateY(-50%);
+    left: 50%;
+    top: 50%;
+  }
+}
+
+.inline-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+}
