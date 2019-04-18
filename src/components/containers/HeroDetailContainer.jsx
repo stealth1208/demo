@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import { getCharacterDetail } from '../../api/marvelApi';
 import {
-  HeroDetail
+  HeroDetail,
+  Loading
 } from '../presentationals';
 
 class HeroDetailContainer extends Component {
   state = {
-    detail: {}
+    detail: {},
+    isLoading: true
   };
 
   async componentWillMount() {
     const detail = await getCharacterDetail(this.props.match.params.id);
     this.setState({
-      detail: detail.results && detail.results[0]
+      detail: detail.results && detail.results[0],
+      isLoading: false
     });
   }
 
@@ -21,14 +24,20 @@ class HeroDetailContainer extends Component {
   }
 
   render() {
-    const { detail } = this.state;
+    const { detail, isLoading } = this.state;
 
     return (
       <>
-        <HeroDetail
-          data={detail}
-          goBack={this.goBack}
-        />
+        {
+          isLoading && <Loading />
+        }
+        {
+          !isLoading &&
+          <HeroDetail
+            data={detail}
+            goBack={this.goBack}
+          />
+        }
       </>
     );
   }

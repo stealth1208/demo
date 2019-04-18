@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import get from 'lodash.get';
 import { getCharacterStory } from '../../../api/marvelApi';
+import { Loading } from '../index';
 
 class Story extends Component {
   state = {
@@ -20,7 +21,7 @@ class Story extends Component {
   render() {
     const { story } = this.state;
     if (!story) {
-      return  <p>Loading</p>;
+      return  <p><Loading /></p>;
     }
     
     const {

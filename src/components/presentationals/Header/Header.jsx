@@ -1,13 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-const Header = () => {
+const Header = () => {  
   return (
     <div className="header">
       <div className="header__link">
-        <Link to="/super-heroes">
+        <a href="/super-heroes">
           Super Heroes
-        </Link>
+        </a>
       </div>
       <div className="header__copyright">
         © 2019 MARVEL

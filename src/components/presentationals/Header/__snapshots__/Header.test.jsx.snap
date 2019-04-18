@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="header"
+>
+  <div
+    className="header__link"
+  >
+    <a
+      href="/super-heroes"
+    >
+      Super Heroes
+    </a>
+  </div>
+  <div
+    className="header__copyright"
+  >
+    © 2019 MARVEL
+  </div>
+</div>
+`;

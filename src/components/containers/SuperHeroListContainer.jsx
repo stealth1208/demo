@@ -45,13 +45,15 @@ class SuperHeroListContainer extends Component {
 
     return (
       <>
+        {
+          isLoading && <Loading />
+        }
         <SuperHeroList
           columns={this.listRender}
           customClass={classes}
           data={results}
           goToDetail={this.goToDetail}
-          loadData={this.loadMore}
-          isLoading={isLoading}
+          loadData={this.loadMore}          
         />
       </>
     );
