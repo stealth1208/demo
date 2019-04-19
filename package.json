@@ -10,9 +10,13 @@
     "babel-loader": "8.0.5",
     "babel-plugin-module-resolver": "^3.1.1",
     "babel-preset-react-app": "^3.1.2",
-    "classname": "^0.0.0",    
+    "classname": "^0.0.0",
+    "express": "^4.16.4",
+    "express-favicon": "^2.0.1",
+    "gh-pages": "^2.0.1",
     "lodash.get": "^4.4.2",
     "node-sass": "^4.11.0",
+    "path": "^0.12.7",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-infinite-scroller": "^1.2.4",
@@ -22,10 +26,12 @@
     "sass-loader": "^7.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start": "node server.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b master -d build"
   },
   "browserslist": [
     ">0.2%",
@@ -35,5 +41,6 @@
   ],
   "devDependencies": {
     "react-test-renderer": "^16.8.6"
-  }
+  },
+  "homepage": "http://stealth1208.github.io/marvel"
 }
