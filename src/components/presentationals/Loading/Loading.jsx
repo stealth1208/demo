@@ -10,7 +10,7 @@ const Loading = ({ className, intent, value }) => (
 
 Loading.propTypes = {
   className: PropTypes.string,
-  intent: PropTypes.number,
+  intent: PropTypes.string,
   value: PropTypes.number
 };
 

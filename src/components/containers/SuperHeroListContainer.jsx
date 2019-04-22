@@ -20,8 +20,6 @@ class SuperHeroListContainer extends Component {
     this.props.history.push(`/super-heroes/${id}`);
   }
 
-
-
   loadMore = async (page) => {
     console.log('page', page)
     this.props.getHeroListAction(page);

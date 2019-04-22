@@ -29,8 +29,8 @@ function SuperHeroList(props) {
               <TableHead className="hero-list__header">
                 <TableRow>
                   {
-                    columns.map(item => (
-                      <TableCell align="left">{item}</TableCell>
+                    columns.map((item, index) => (
+                      <TableCell key={`${item}_${index}`} align="left">{item}</TableCell>
                     ))
                   }
                 </TableRow>
@@ -41,9 +41,9 @@ function SuperHeroList(props) {
                     const id = row.id;
                     return <TableRow key={`${id}_${index}`}>
                       {
-                        columns.map(cell => {
+                        columns.map((cell, index) => {
                           if (cell === 'thumbnail') {
-                            return <TableCell className="hero-list__body__image-cell" align="center">
+                            return <TableCell key={`${id}_${index}_image`} className="hero-list__body__image-cell" align="center">
                               <Thumbnail
                                 src={row[cell]}
                                 onClick={() => goToDetail(id)}
@@ -51,7 +51,7 @@ function SuperHeroList(props) {
                             </TableCell>;
                           }
 
-                          return <TableCell className="hero-list__body__text-cell" align="left">{row[cell]}</TableCell>;
+                          return <TableCell key={`${id}_${index}_text`} className="hero-list__body__text-cell" align="left">{row[cell]}</TableCell>;
                         }
                         )
                       }

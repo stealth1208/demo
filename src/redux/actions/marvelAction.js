@@ -1,5 +1,5 @@
-import { getCharList, getCharacterDetail } from '../../api/marvelApi';
-import { HERO_LIST, HERO_DETAIL } from '../actionTypes';
+import { getCharList, getCharacterDetail, getCharacterStory } from '../../api/marvelApi';
+import { HERO_LIST, HERO_DETAIL, HERO_STORY } from '../actionTypes';
 
 
 export const getHeroListAction = (page) => {
@@ -45,5 +45,26 @@ export const getHeroDetail = (id) => {
         error
       });
     }
+  }
+}
+
+export const getHeroStory = (url) => {
+  return async (dispatch) => {
+    dispatch({
+      type: HERO_STORY.GET.REQUEST
+    });
+    try {
+      const story = await getCharacterStory(url);
+      dispatch({
+        type: HERO_STORY.GET.SUCCESS,
+        payload: story.results[0]
+      });
+    } catch (error) {
+      dispatch({
+        type: HERO_STORY.GET.FAILURE,
+        error
+      });
+    }
+
   }
 }

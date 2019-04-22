@@ -11,10 +11,13 @@ function createRequestTypes(base) {
 }
 
 export const HERO_LIST = {
-  GET: createRequestTypes('CHAR_LIST.GET')
+  GET: createRequestTypes('HERO_LIST.GET')
 };
 
 export const HERO_DETAIL = {
   GET: createRequestTypes('HERO_DETAIL.GET')
 };
 
+export const HERO_STORY = {
+  GET: createRequestTypes('HERO_STORY.GET')
+};
