@@ -1,22 +1,18 @@
 import React, { Component } from 'react';
-import { getCharList } from'../../api/marvelApi';
 import { SuperHeroList, Loading } from '../presentationals';
 import { withStyles } from '@material-ui/core/styles';
+import { connect } from 'react-redux';
+import { getHeroListAction } from '../../redux/actions/marvelAction';
 
 class SuperHeroListContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      results: [],
-      isLoading: true
-    };
     this.imagePath = 'thumbnail';
     this.listRender = ['name', 'description', this.imagePath]
   }
 
-  async componentWillMount() {
-    const charList = await getCharList(0);
-    this.createData(charList);
+  componentWillMount() {
+    this.props.getHeroListAction(0);
   }
 
 
@@ -24,36 +20,32 @@ class SuperHeroListContainer extends Component {
     this.props.history.push(`/super-heroes/${id}`);
   }
 
-  createData = (data) => {
-    const { results } = data;
-    const filtered = results.map(({id, name, description, thumbnail}) => ({id, name, description, thumbnail}));
-    this.setState({
-      results: [...this.state.results, ...filtered],
-      isLoading: false
-    });
-  }
+
 
   loadMore = async (page) => {
     console.log('page', page)
-    const charList = await getCharList(page);
-    this.createData(charList);
+    this.props.getHeroListAction(page);
   }
 
   render = () => {
-    const { results, isLoading } = this.state;
-    const { classes } = this.props;
+    const {
+      isRequestingList,
+      heroList,
+      classes
+    } = this.props;
 
     return (
       <>
         {
-          isLoading && <Loading />
+          isRequestingList &&
+          <Loading />
         }
         <SuperHeroList
           columns={this.listRender}
           customClass={classes}
-          data={results}
+          data={heroList}
           goToDetail={this.goToDetail}
-          loadData={this.loadMore}          
+          loadData={this.loadMore}
         />
       </>
     );
@@ -84,4 +76,16 @@ const styles = theme => ({
   },
 });
 
-export default withStyles(styles)(SuperHeroListContainer);
+const mapDispatchToProps = {
+  getHeroListAction
+};
+
+const mapStateToProps = (state) => {
+  return {
+    ...state.heroListReducer
+  }
+};
+
+const containerWithStyle = withStyles(styles)(SuperHeroListContainer);
+
+export default connect(mapStateToProps, mapDispatchToProps)(containerWithStyle);
