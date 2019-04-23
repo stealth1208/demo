@@ -13,6 +13,12 @@ render (
         <Switch>
           <Route
             exact
+            path="/"
+            component={SuperHeroListContainer}
+          />
+
+          <Route
+            exact
             path="/super-heroes"
             component={SuperHeroListContainer}
           />
