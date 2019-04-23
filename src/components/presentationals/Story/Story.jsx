@@ -1,81 +1,53 @@
-import React, { Component } from 'react';
-import get from 'lodash.get';
-import { getCharacterStory } from '../../../api/marvelApi';
-import { Loading } from '../index';
+import React from 'react';
 
-class Story extends Component {
-  state = {
-    story: null
-  };
-  
-  async componentWillMount() {
-    const collectionURI = get(this.props, 'series.collectionURI', '');    
-    if (collectionURI) {
-      const stories = await getCharacterStory(collectionURI);      
-      this.setState({
-        story: stories.results[0]
-      });
-    }
-  }
+function Story(props) {
+  const { data } = props;
+  const {
+    title,
+    startYear,
+    rating,
+    creators,
+    characters
+  } = data;
+  const creatorItems = creators && creators.items;
+  const characterItems = characters && characters.items;
 
-  render() {
-    const { story } = this.state;
-    if (!story) {
-      return  <p><Loading /></p>;
-    }
-    
-    const {
-      title,
-      startYear,
-      rating,
-      creators,
-      characters
-    } = story;
-    const creatorItems = creators && creators.items;
-    const characterItems = characters && characters.items;
-
-    return (
-      <div>
-        {
-          story &&
-          <div className="hero-story">
-            <strong>From Series: {title}</strong>
-            <p className="hero-story__rating">
-              <span>Start year: {startYear}</span>
-              <strong className="float-right">Rating: {rating}</strong>
-            </p>
+  return (
+    <div className="hero-story">
+      <strong>From Series: {title}</strong>
+      <p className="hero-story__rating">
+        <span>Start year: {startYear}</span>
+        <strong className="float-right">Rating: {rating}</strong>
+      </p>
+      {
+        !!creatorItems.length &&
+        <div className="hero-story__creators">
+          <strong>Creators</strong>
+          <ul>
             {
-              !!creatorItems.length &&
-              <p className="hero-story__creators">
-                <strong>Creators</strong>
-                <ul>
-                  {
-                    creatorItems.slice(0, 3).map(item => (
-                      <li>{item.name}</li>
-                    ))
-                  }
-                </ul>
-              </p>
+              creatorItems.slice(0, 3).map((item, index) => (
+                <li key={`${item.name}_${index}`}>{item.name}</li>
+              ))
             }
-    
+          </ul>
+        </div>
+      }
+
+      {
+        !!characterItems.length &&
+        <div>
+          <strong className="hero-story__character">Characters</strong>
+          <ul>
             {
-              !!characterItems.length &&
-              <p>
-                <strong className="hero-story__character">Characters</strong>
-                <ul>
-                  {
-                    characterItems.slice(0, 5).map(item => (
-                      <li>{item.name}</li>                  
-                    ))
-                  }
-                </ul>
-              </p>
+              characterItems.slice(0, 5).map((item, index) => (
+                <li key={`${item.name}_${index}`}>{item.name}</li>
+              ))
             }
-          </div>
-        }        
-      </div>
-    );
-  }
+          </ul>
+        </div>
+      }
+    </div>
+  );
 }
 
 export default Story;

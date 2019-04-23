@@ -3,18 +3,20 @@ import {
   Title,
   Thumbnail,
   Description,
-  Button,
-  Story
+  Button
 } from '../index';
+import { StoryContainer } from '../../containers';
+import get from 'lodash.get';
 
 function HeroDetail(props) {
   const { data, goBack } = props;
   const {
     name,
     thumbnail,
-    description,
-    series      
+    description
   } = data;
+
+  const storyLink = get(data, 'series.collectionURI', '');
 
   return (
     <div className="hero-detail">
@@ -32,9 +34,9 @@ function HeroDetail(props) {
         { description }
       </Description>
       {
-        series && 
-        <Story
-          series={series}          
+        storyLink &&
+        <StoryContainer
+          storyLink={storyLink}
         />
       }
       <Button
