@@ -1,22 +1,14 @@
 import React, { Component } from 'react';
-import { getCharacterDetail } from '../../api/marvelApi';
 import {
   HeroDetail,
   Loading
 } from '../presentationals';
+import { connect } from 'react-redux';
+import { getHeroDetail } from '../../redux/actions/marvelAction';
 
 class HeroDetailContainer extends Component {
-  state = {
-    detail: {},
-    isLoading: true
-  };
-
-  async componentWillMount() {
-    const detail = await getCharacterDetail(this.props.match.params.id);
-    this.setState({
-      detail: detail.results && detail.results[0],
-      isLoading: false
-    });
+  componentWillMount() {
+    this.props.getHeroDetail(this.props.match.params.id);
   }
 
   goBack = () => {
@@ -24,17 +16,17 @@ class HeroDetailContainer extends Component {
   }
 
   render() {
-    const { detail, isLoading } = this.state;
+    const { heroDetail, isRequesting } = this.props;
 
     return (
       <>
         {
-          isLoading && <Loading />
+          isRequesting && <Loading />
         }
         {
-          !isLoading &&
+          !isRequesting &&
           <HeroDetail
-            data={detail}
+            data={heroDetail}
             goBack={this.goBack}
           />
         }
@@ -43,4 +35,14 @@ class HeroDetailContainer extends Component {
   }
 }
 
-export default HeroDetailContainer;
+const mapDispatchToProps = {
+  getHeroDetail
+};
+
+function mapStateToProps(state) {
+  return {
+    ...state.heroDetailReducer
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HeroDetailContainer);
