@@ -4,6 +4,5 @@ const configs = {
   BUILD_DIR: path.join(__dirname, '..', 'public'),
   APP_DIR: path.join(__dirname, '..', 'src'),
 };
-console.log('*******', configs.BUILD_DIR)
 
 module.exports = configs;

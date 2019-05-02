@@ -1,13 +1,16 @@
-// const { APP_DIR } = require('./constants');
+const { APP_DIR, resolve } = require('./constants');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  // mode,
-  entry: [
-    'babel-polyfill',
-    // `src/index.jsx`,
-    // `src/styles/main.scss`,
-  ],
+  entry: {
+    app: [
+      'babel-polyfill',
+      `${APP_DIR}/index.jsx`,
+      `${APP_DIR}/styles/main.scss`,
+    ]
+  },
   resolve: {
+    modules: [resolve('src'), 'node_modules'],
     extensions: ['*', '.js', '.jsx']
   },
   module: {
@@ -23,7 +26,13 @@ module.exports = {
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
         loader: ['file-loader']
-      }
+      },
     ]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: `${APP_DIR}/index.tpl.ejs`,
+      minChunks: 5,
+    }),
+  ]
 };

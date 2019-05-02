@@ -37,7 +37,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -b master -d build",
     "start-wp": "webpack-dev-server --config ./config/webpack.config.dev.js --mode development",
-    "build-wp": "yarn clean && webpack-dev-server --config ./config/webpack.config.prod.js --mode production",
+    "build-wp": "yarn clean && webpack -p --config ./config/webpack.config.prod.js --progress --mode production",
     "clean": "rimraf './public/'"
   },
   "browserslist": [
@@ -55,6 +55,9 @@
     "css-loader": "^2.1.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^3.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "postcss-loader": "^3.0.0",
+    "preload-webpack-plugin": "^2.3.0",
     "react-hot-loader": "^4.8.4",
     "react-test-renderer": "^16.8.6",
     "style-loader": "^0.23.1",
