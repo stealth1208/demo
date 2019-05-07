@@ -10,14 +10,6 @@ function createRequestTypes(base) {
   return res;
 }
 
-export const HERO_LIST = {
-  GET: createRequestTypes('HERO_LIST.GET')
-};
-
-export const HERO_DETAIL = {
-  GET: createRequestTypes('HERO_DETAIL.GET')
-};
-
-export const HERO_STORY = {
-  GET: createRequestTypes('HERO_STORY.GET')
+export const MERCHANT_LIST = {
+  GET: createRequestTypes('MERCHANT_LIST.GET')
 };

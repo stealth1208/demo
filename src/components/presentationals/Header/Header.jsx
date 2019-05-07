@@ -1,16 +1,9 @@
 import React from 'react';
 
-const Header = () => {  
+const Header = ({ children }) => {
   return (
     <div className="header">
-      <div className="header__link">
-        <a href="/super-heroes">
-          Super Heroes
-        </a>
-      </div>
-      <div className="header__copyright">
-        © 2019 MARVEL
-      </div>
+      { children }
     </div>
   );
 };

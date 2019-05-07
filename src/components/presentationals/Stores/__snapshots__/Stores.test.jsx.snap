@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="stores"
+>
+  <div
+    className="stores__item"
+  >
+    <div
+      className="stores__item__image"
+    >
+      <img
+        alt="Qoo10 Coupons & Promo Codes"
+        src="https://static.shopback.com/uploads/ci/143830/logo-qoo10.gif"
+      />
+    </div>
+    <div
+      className="stores__item__name"
+    >
+       
+      Qoo10
+    </div>
+  </div>
+</div>
+`;

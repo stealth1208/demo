@@ -1,1 +1,1 @@
-// export * from './marvelAction';
+export * from './merchantAction';

@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="categories"
+>
+  <div
+    className="category__item category__item--selected"
+    onClick={[Function]}
+  >
+    <div
+      className="category__item__image"
+    >
+      <img
+        alt="Popular"
+        src="https://cloud.shopback.com/raw/upload/static/images/icon/core/fire.svg"
+      />
+    </div>
+    <a
+      className="category__item__link"
+    >
+      Popular
+    </a>
+  </div>
+</div>
+`;
